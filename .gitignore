@@ -1,0 +1,8 @@
+# setup.py
+build
+dist
+*.egg*
+
+# Python distribution generated files
+.eggs
+

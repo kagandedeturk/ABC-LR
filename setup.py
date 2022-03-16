@@ -13,7 +13,7 @@ setup(
     classifiers=[
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.10",
-        "Licence :: BSD License (3-clause BSD)",
+        "License :: OSI Approved :: BSD License",
         "Operating System :: OS Independent",
     ],
     long_description=long_description,

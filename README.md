@@ -20,6 +20,7 @@ pip install abcLR
 
 import numpy as np
 parallelType = np
+from abcLR import ABC_LR_Model
 from sklearn.datasets import load_breast_cancer
 X, y = load_breast_cancer(return_X_y=True)
 y = y.reshape(-1,1)
@@ -44,10 +45,9 @@ print(f"Result: {model.score(X, y)}")
 ## GPU Version Usage
 
 ```py
-
 import cupy as cp
 parallelType = cp
-
+from abcLR import ABC_LR_Model
 from sklearn.datasets import load_breast_cancer
 X, y = load_breast_cancer(return_X_y=True)
 

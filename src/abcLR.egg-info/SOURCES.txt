@@ -1,6 +1,9 @@
 LICENSE.txt
+MANIFEST.in
 README.md
 setup.py
+dist/abcLR-0.0.1-py3-none-any.whl
+dist/abcLR-0.0.1.tar.gz
 src/abcLR.py
 src/abcLR.egg-info/PKG-INFO
 src/abcLR.egg-info/SOURCES.txt
