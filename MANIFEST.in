@@ -1,3 +1,4 @@
+include *.in
 recursive-include build *.py
 recursive-include dist *.gz
 recursive-include dist *.whl
