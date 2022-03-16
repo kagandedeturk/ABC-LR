@@ -14,6 +14,12 @@ Install ABC-LR via PyPI:
 pip install abcLR
 ```
 
+Or alternatively, clone the environment:
+
+```
+git clone https://github.com/kagandedeturk/ABC-LR.git
+```
+
 ## CPU Version Usage
 
 ```py
@@ -83,23 +89,5 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 You should have received a copy of the 3-clause BSD license
 along with this program (see LICENSE file).
 If not, see [here](https://opensource.org/licenses/BSD-3-Clause).
-
-## Citation
-
-If you use ABC-LR in one of your research projects, please cite us:
-
-```
-@article{DEDETURK2020,
-title = {Spam filtering using a logistic regression model trained by an artificial bee colony algorithm},
-journal = {Applied Soft Computing},
-volume = {91},
-pages = {106229},
-year = {2020},
-issn = {1568-4946},
-doi = {https://doi.org/10.1016/j.asoc.2020.106229},
-url = {https://www.sciencedirect.com/science/article/pii/S1568494620301691},
-author = {Bilge Kagan Dedeturk and Bahriye Akay},
-}
-```
 
 Copyright (c) 2022, Bilge Kagan Dedeturk (kagandedeturk@gmail.com)
