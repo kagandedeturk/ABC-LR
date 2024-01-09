@@ -1,10 +1,12 @@
 # ARTIFICIAL BEE COLONY ALGORITHM WITH LOGISTIC REGRESSION (ABC-LR)
 
-ABC-LR is a binary classification method in which the ABC algorithm is used instead of the Gradient Descent algorithm to train the weights in the Logistic Regression classification model. The purpose of the ABC algorithm in the ABC-LR method is to minimize the value of the cost function. The ABC algorithm is a very popular metaheuristic method that can search for solutions both locally and globally in the solution space. In addition, it has been shown in the study that the ABC-LR classification method achieves superior classification success compared to the LR classification method.
+ABC-LR is an innovative binary classification technique that leverages the Artificial Bee Colony (ABC) algorithm, substituting the traditional Gradient Descent approach for training weights in the Logistic Regression model. This method primarily aims to minimize the cost function's value through the ABC algorithm. Renowned for its dual capacity for local and global solution space exploration, the ABC algorithm significantly enhances this classification method.
 
-Although the ABC-LR classification method can handle complex and high-dimensional data, its runtime can be high. Therefore, CPU and GPU parallelized versions of the ABC-LR classification method are presented here, and significant improvements in runtime can be achieved.
+Our research indicates that ABC-LR outperforms the standard Logistic Regression (LR) method in terms of classification accuracy. This is particularly notable in managing complex and high-dimensional datasets.
 
-ABC-LR is written in Python3 and continuously tested with Python 3.7 and 3.10.
+However, it's important to note that the ABC-LR method may exhibit increased runtime, especially with complex data. To address this, we offer both CPU and GPU parallelized versions of the ABC-LR classification method, ensuring substantial runtime efficiency gains.
+
+ABC-LR is developed in Python3 and undergoes regular testing on Python versions 3.7 and 3.10, ensuring consistent performance and compatibility.
 
 ## Installation
 
@@ -90,4 +92,52 @@ You should have received a copy of the 3-clause BSD license
 along with this program (see LICENSE file).
 If not, see [here](https://opensource.org/licenses/BSD-3-Clause).
 
-Copyright (c) 2022, Bilge Kagan Dedeturk (kagandedeturk@gmail.com)
+## Miscellaneous
+
+abcLR has been developed by [Dr. Bilge Kagan Dedeturk](https://avesis.erciyes.edu.tr/bilgededeturk), an Assistant Professor in the Department of Software Engineering at Erciyes University. For any queries or further information, Dr. Dedeturk can be contacted at kagandedeturk@gmail.com or bilgededeturk@erciyes.edu.tr.
+
+### Reporting Issues
+
+Encountered a bug? Your contributions to refining abcLR are invaluable. Please report any issues you find at our GitHub repository: [abcLR Issues](https://github.com/kagandedeturk/ABC-LR/issues).
+
+### Citation
+
+Are you incorporating abcLR into your research? We'd be honored. Please refer to the following studies in your citations to acknowledge the use of abcLR:
+
+```
+@article{DEDETURK2020106229,
+    title = {Spam filtering using a logistic regression model trained by an artificial bee colony algorithm},
+    journal = {Applied Soft Computing},
+    volume = {91},
+    pages = {106229},
+    year = {2020},
+    issn = {1568-4946},
+    doi = {https://doi.org/10.1016/j.asoc.2020.106229},
+    author = {Bilge Kagan Dedeturk and Bahriye Akay}
+}
+
+@Inbook{Dedeturk2021,
+    author = {Dedeturk, Bilge Kagan and Akay, Bahriye and Karaboga, Dervis},
+    editor = {Carbas, Serdar and Toktas, Abdurrahim and Ustun, Deniz},
+    title = {Artificial Bee Colony Algorithm and Its Application to Content Filtering in Digital Communication},
+    bookTitle = {Nature-Inspired Metaheuristic Algorithms for Engineering Optimization Applications},
+    year = {2021},
+    publisher = {Springer Singapore},
+    address = {Singapore},
+    pages = {337--355},
+    doi = {10.1007/978-981-33-6773-9_15}
+}
+
+@article{KOLUKISA2024103808,
+    title = {An efficient network intrusion detection approach based on logistic regression model and parallel artificial bee colony algorithm},
+    journal = {Computer Standards & Interfaces},
+    volume = {89},
+    pages = {103808},
+    year = {2024},
+    issn = {0920-5489},
+    doi = {https://doi.org/10.1016/j.csi.2023.103808},
+    author = {Burak Kolukisa and Bilge Kagan Dedeturk and Hilal Hacilar and Vehbi Cagri Gungor}
+}
+```
+
+Copyright (c) 2022, Bilge Kagan Dedeturk (kagandedeturk@gmail.com).
