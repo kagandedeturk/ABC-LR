@@ -6,8 +6,8 @@ with open("README.md", "r") as fh:
 
 setup(
     name='abcLR',
-    version='0.0.2',
-    description='ABC-LR is a classification method that combines Artificial Bee Colony algorithm with a logistic regression classification model',
+    version='0.0.3',
+    description='ABC-LR is a classification method that combines the Artificial Bee Colony algorithm with a logistic regression classification model.',
     py_modules=['abcLR'],
     package_dir={'': 'src'},
     classifiers=[
