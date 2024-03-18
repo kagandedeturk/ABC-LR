@@ -1,13 +1,14 @@
 
 class ABC:
-    def __init__(self, inputX, target, FVS, P, limit, lb, ub, MR, L2, parallelType):
+    def __init__(self, inputX, target, P, limit, lb, ub, MR, L2, parallelType):
         self.comp = parallelType
         self.X = inputX
-        self.y = target
+        self.y = target.reshape(-1, 1)
+        self.FVS = inputX.shape[1]
         self.P = P  # P is population size
         self.limit = limit
         # The number of parameters to be optimized (FVS: Feature Vector Size)
-        self.D = FVS + 1
+        self.D = self.FVS + 1
         self.lb = lb  # lower bound for parameters
         self.ub = ub  # upper bound for parameters
         self.MR = MR  # modification rate
@@ -119,9 +120,9 @@ class ABC:
 
 
 class LearnABC:
-    def __init__(self, inputX, target, FVS, P, limit, lb, ub, MR, L2, parallelType, evaluationNumber):
+    def __init__(self, inputX, target, P, limit, lb, ub, MR, L2, parallelType, evaluationNumber):
         self.comp = parallelType
-        self.abc = ABC(inputX, target, FVS, P, limit,
+        self.abc = ABC(inputX, target, P, limit,
                        lb, ub, MR, L2, parallelType)
         self.total_numberof_evaluation = evaluationNumber
 
@@ -194,19 +195,51 @@ class ABC_LR_Model():
         self.parallelType = parallelType
 
     def fit(self, trainX, trainY):
-        self.FVS = trainX.shape[1]
-        learn = LearnABC(trainX, trainY, self.FVS, self.P, self.limit, self.lb,
+        learn = LearnABC(trainX, trainY, self.P, self.limit, self.lb,
                          self.ub, self.MR, self.L2, self.parallelType, self.evaluationNumber)
         learn.learn()
         self.net = learn.net
 
     def logsig(self, x):
         return 1 / (1 + self.parallelType.exp(-x))
+    
+    def __str__(self):
+        return f"lb={self.lb}, ub={self.ub}, evaNumber={self.evaluationNumber}, P={self.P}, limit={self.limit}, MR={self.MR}, L2={self.L2}"
+
+    def f1_score(self, actual, predicted):
+        tp = self.parallelType.sum(predicted * actual, axis=0)
+        fp = self.parallelType.sum(predicted, axis=0) - tp
+        fn = self.parallelType.sum(actual) - tp
+        f1 = self.parallelType.zeros(tp.shape)
+        ind = tp != 0
+        precision = tp[ind] / (tp[ind] + fp[ind])
+        recall = tp[ind] / (tp[ind] + fn[ind])
+        f1[ind] = 2*precision*recall / (precision+recall)
+        return f1
 
     def score(self, X, y):
-        prediction = self.logsig(self.parallelType.dot(self.parallelType.append(
-            self.parallelType.ones((X.shape[0], 1)), X, axis=1), self.net.T))
-        prediction[prediction >= 0.5] = 1
-        prediction[prediction < 0.5] = 0
-        res = self.parallelType.average(y == prediction)
-        return res
+        W = self.net[:, 1:]
+        b = self.net[:, 0]
+        p = self.logsig(X.dot(W.T) + b) # prediction of the model
+        p[p >= 0.5] = 1
+        p[p < 0.5] = 0
+        y = y.reshape(-1, 1)
+        f1 = self.f1_score(y, p)
+        acc = self.parallelType.average(y == p)
+        confMat = self.getConfusionMatrix(y, p)
+        return [acc, f1, p, confMat]
+
+    def getConfusionMatrix(self, actual, predicted):
+        confMat = self.parallelType.zeros((2, 2))
+        for i in range(2):
+            for j in range(2):
+                confMat[i, j] = self.parallelType.sum(
+                    predicted[(actual == i)] == j)
+        return confMat
+        # Confusion Matrix by Google
+        # TN FN
+        # FP TP
+
+        # Confusion Matrix by Wiki and Sklearn
+        # TN FP
+        # FN TP

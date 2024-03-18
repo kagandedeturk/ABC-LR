@@ -31,7 +31,6 @@ parallelType = np
 from abcLR import ABC_LR_Model
 from sklearn.datasets import load_breast_cancer
 X, y = load_breast_cancer(return_X_y=True)
-y = y.reshape(-1,1)
 
 lb = -16
 ub = 16
@@ -60,7 +59,7 @@ from sklearn.datasets import load_breast_cancer
 X, y = load_breast_cancer(return_X_y=True)
 
 X = parallelType.array(X)
-y = parallelType.array(y.reshape(-1,1))
+y = parallelType.array(y)
 
 lb = -16
 ub = 16
