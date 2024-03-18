@@ -1,3 +1,6 @@
+# Automatically generated Mac OS file
+.DS_Store
+
 # setup.py
 build
 dist
@@ -5,4 +8,3 @@ dist
 
 # Python distribution generated files
 .eggs
-
