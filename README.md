@@ -34,7 +34,7 @@ X, y = load_breast_cancer(return_X_y=True)
 
 lb = -16
 ub = 16
-evaluationNumber = 80000
+evaluationNumber = 20000
 # FVS = trainData.shape[1]
 limit = 50
 P = 60
@@ -45,7 +45,8 @@ model = ABC_LR_Model(lb=lb, ub=ub, evaluationNumber=evaluationNumber, limit=limi
 #start_time = dt.datetime.now()
 model.fit(X, y)
 #print(f"Run time: {dt.datetime.now()-start_time}")
-print(f"Result: {model.score(X, y)}")
+acc, F1, prediction, confMatrix = model.score(X, y)
+print(f"Accuracy: {acc}\nF1-Score: {F1}\nConfusion Matrix: {confMatrix}")
 
 ```
 
@@ -74,7 +75,8 @@ model = ABC_LR_Model(lb=lb, ub=ub, evaluationNumber=evaluationNumber, limit=limi
 #start_time = dt.datetime.now()
 model.fit(X, y)
 #print(f"Run time: {dt.datetime.now()-start_time}")
-print(f"Result: {model.score(X, y)}")
+acc, F1, prediction, confMatrix = model.score(X, y)
+print(f"Accuracy: {acc}\nF1-Score: {F1}\nConfusion Matrix: {confMatrix}")
 
 ```
 
